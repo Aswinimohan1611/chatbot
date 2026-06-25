@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+
+    <style>
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body{
+            background:#f4f6f9;
+            height:100vh;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+        }
+
+        .container{
+            width:400px;
+            background:white;
+            padding:25px;
+            border-radius:12px;
+            box-shadow:0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        h2{
+            text-align:center;
+            margin-bottom:20px;
+            color:#333;
+        }
+
+        input[type="text"],
+        input[type="file"]{
+            width:100%;
+            padding:10px;
+            margin-bottom:15px;
+            border:1px solid #ccc;
+            border-radius:8px;
+        }
+
+        button{
+            width:100%;
+            padding:12px;
+            border:none;
+            border-radius:8px;
+            background:#007bff;
+            color:white;
+            font-size:16px;
+            cursor:pointer;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        .output{
+            margin-top:20px;
+            padding:12px;
+            background:#f1f3f5;
+            border-radius:8px;
+            word-wrap:break-word;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2>PDF Chatbot</h2>
+
+        <form method="POST" enctype="multipart/form-data">
+            <input type="text" name="user" placeholder="Ask your question..." required>
+
+            <input type="file" name="file" accept=".pdf">
+
+            <button type="submit">Ask</button>
+        </form>
+
+        {% if output %}
+        <div class="output">
+            <strong>Response:</strong>
+            <p>{{ output }}</p>
+        </div>
+        {% endif %}
+    </div>
+
+</body>
+</html>
